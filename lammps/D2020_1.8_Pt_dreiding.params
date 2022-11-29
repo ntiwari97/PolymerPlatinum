@@ -4,7 +4,6 @@
 
 variable	seed		index	-1
 variable	ntotal		index	9224
-variable	fshape		index	0.194697126579
 variable	output		index	D2020_1.8_Pt
 variable	field		index	pcff
 variable	location	index	./
@@ -39,7 +38,7 @@ variable	lbond		index	3.912
 variable	lcell		index	1.58740105197
 variable	la		index	9.04
 variable	lb		index	43.209
-variable	lc		index	49.893453
+variable	lc		index 50.000
 variable	nsites		index	16
 variable	nclusters	index	16
 variable	lxx		index	98.5203569059
