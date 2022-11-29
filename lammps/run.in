@@ -1,0 +1,86 @@
+# D2020 HOPI Combined Run File
+
+# Variables
+
+variable	timestep	index	0.5		# integration time step
+variable  annealtime index 2000000
+variable  name       index D2020_Pt
+variable  dtdump     index   5000
+variable  nrestart   index   0
+
+
+if "${nrestart} != 0" then &
+"variable	data		index	${name}_12_${restartminusone}.rst" &
+else &
+"variable	data		index	${dir}/${name}_edit.data" &
+
+# Box Settings
+units          real
+atom_style     full
+boundary       p p f
+
+pair_style     lj/cut/coul/long 22.5 22.5
+pair_modify    mix sixthpower
+dielectric     1.0
+special_bonds  lj 0.000000 0.000000 1.000000 coul 0.000000 0.000000 1.000000
+bond_style     class2
+angle_style    class2
+dihedral_style class2
+read_data      ${data}
+include        D2020_1.8_Pt_dreiding.params
+kspace_style   pppm 0.00001
+kspace_modify  slab 10.0 
+dump	         1 all yaml ${dtdump} ${dir}/${name}.yaml id type xu yu zu
+dump	         2 all custom ${dtdump} ${dir}/${name}.lammpstrj id type xu yu zu
+if "${nrestart} != 0" then "dump_modify 1 append yes"
+thermo_style   custom etotal ke pe ebond eangle edihed eimp evdwl ecoul elong temp press vol
+thermo_modify  line yaml
+thermo         1000
+thermo_modify  flush yes
+log	           ${dir}/log.lammps
+restart        100 ${dir}/${name}_11_${nrestart}.rst ${dir}/${name}_12_${nrestart}.rst
+min_style      cg
+neigh_modify   every 1 delay 0 check yes
+neigh_modify    one 10000
+group          pt    type 1
+group          ox    type 8
+group          notox type != 8
+group          notpt    type != 1
+group          notoxpt     intersect   notox notpt 
+
+fix            frpt    pt   setforce 0.0 0.0 0.0
+fix            frox    ox   setforce 0.0 0.0 0.0
+
+if "${nrestart} != 0" then "jump SELF simulate"
+
+# Minimize
+minimize       0.0 1.0e-8 10000 1000000
+
+
+timestep       ${timestep}
+write_data     after_min.data
+
+# Integrate
+
+fix        	temp notoxpt langevin 1000.0 1000.0 100.0 723853
+fix 	       int notoxpt nve/limit 0.1 
+run 	       ${annealtime}
+unfix          int
+unfix          temp
+
+fix        	temp notoxpt langevin 1000.0 353.0 100.0 723853
+fix 	       int notoxpt nve/limit 0.1 
+run 	       ${annealtime}
+unfix          int
+unfix          temp
+write_data     after_anneal.data
+
+label        simulate
+fix 	       int notpt nve
+
+
+run 	       2000000
+
+write_data     ${name}_run.data
+
+

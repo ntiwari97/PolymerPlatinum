@@ -1,0 +1,241 @@
+# LAMMPS parameters created by EMC v9.4.4, build Jul 27 2022 17:22:21
+
+# Variables
+
+variable	seed		index	-1
+variable	ntotal		index	9224
+variable	fshape		index	0.194697126579
+variable	output		index	D2020_1.8_Pt
+variable	field		index	pcff
+variable	location	index	./
+variable	nav		index	0.6022141179
+variable	temperature	index	1000
+variable	radius		index	5
+variable	nrelax		index	100
+variable	weight_nonbond	index	0.0001
+variable	weight_bond	index	0.0001
+variable	weight_focus	index	1
+variable	cutoff		index 15.0
+variable	charge_cutoff	index 22.0
+variable	kappa		index	4
+variable	import		index	/opt/emc/lib/pt111
+variable	nx		index	1
+variable	density1	index	1.6
+variable	density2	index	0.16
+variable	lprevious	index	67.7115418207
+variable	lphase		index	98.5203569059
+variable	f_ox		index	200
+variable	f_poly		index	20
+variable	f_water		index	96
+variable	chem_A		index	*C(F)(F)C(F)(F)*
+variable	chem_B		index	*C(F)(OC(F)(F)C(F)(F)S(=O)(=O)O)C(F)(F)*
+variable	chem_T		index	FC*(F)F
+variable	chem_water	index	O(H)(H)
+variable	chem_oxygen	index	O=O
+variable	bcc_chemistry	index	[Pt]
+variable	bcc_name	index	platinum
+variable	bcc_atomistic	index	2
+variable	lbond		index	3.912
+variable	lcell		index	1.58740105197
+variable	la		index	9.04
+variable	lb		index	43.209
+variable	lc		index	49.893453
+variable	nsites		index	16
+variable	nclusters	index	16
+variable	lxx		index	98.5203569059
+variable	lyy		index	43.209
+variable	lzz		index	49.893453
+variable	lzy		index	0
+variable	lzx		index	0
+variable	lyx		index	0
+variable	lbox		index	46.4310909917
+variable	lg_A		index	6
+variable	lg_B		index	17
+variable	lg_T		index	4
+variable	lg_water	index	3
+variable	lg_oxygen	index	2
+variable	l_ox		index	2
+variable	norm_ox		index	1
+variable	norm_poly	index	2
+variable	l_poly		index	362
+variable	l_water		index	3
+variable	norm_water	index	1
+variable	mg_A		index	100.0159
+variable	mg_B		index	278.10297
+variable	mg_T		index	69.00635
+variable	mg_water	index	18.01534
+variable	mg_oxygen	index	31.9988
+variable	m_ox		index	31.9988
+variable	m_poly		index	6007.29832
+variable	m_water		index	18.01534
+variable	n_ox		index	200
+variable	n_poly		index	20
+variable	n_water		index	96
+variable	mtotal		index	381111.83904
+variable	nphase1		index	7528
+variable	mphase1		index	121875.43904
+variable	vphase1		index	126486.821109
+variable	ny		index	9
+variable	nz		index	9
+variable	lxtal		index	9.04
+variable	charge		index	0
+variable	vtotal		index	212394.73811
+variable	nl_surface	index	1296
+variable	lphase1		index	58.6715418207
+variable	nphase2		index	400
+variable	mphase2		index	6399.75999999
+variable	vphase2		index	66419.067257
+variable	lphase2		index	30.8088150853
+variable	nl_poly		index	20
+
+# Types
+
+variable	type_Pt		index	1
+variable	type_c		index	2
+variable	type_f		index	3
+variable	type_ho		index	4
+variable	type_hw		index	5
+variable	type_os		index	6
+variable	type_om		index	7
+variable	type_oe		index	8
+variable	type_oc		index	9
+variable	type_oh		index	10
+variable	type_s		index	11
+
+variable	type_bond_c_c	index	1
+variable	type_bond_c_f	index	2
+variable	type_bond_c_oc	index	3
+variable	type_bond_c_s	index	4
+variable	type_bond_ho_oh	index	5
+variable	type_bond_hw_os	index	6
+variable	type_bond_om_om	index	7
+variable	type_bond_oe_s	index	8
+variable	type_bond_oh_s	index	9
+
+variable	type_angle_c_c_c index	1
+variable	type_angle_c_c_f index	2
+variable	type_angle_c_c_oc index	3
+variable	type_angle_c_c_s index	4
+variable	type_angle_c_oc_c index	5
+variable	type_angle_c_s_oe index	6
+variable	type_angle_c_s_oh index	7
+variable	type_angle_f_c_f index	8
+variable	type_angle_f_c_oc index	9
+variable	type_angle_f_c_s index	10
+variable	type_angle_ho_oh_s index	11
+variable	type_angle_hw_os_hw index	12
+variable	type_angle_oe_s_oe index	13
+variable	type_angle_oe_s_oh index	14
+
+# Clusters
+
+variable	n0_bcc		index	1
+variable	n1_bcc		index	1296
+variable	nl_bcc		index	1296
+
+variable	n0_poly		index	1297
+variable	n1_poly		index	1316
+variable	nl_poly		index	20
+
+variable	n0_water	index	1317
+variable	n1_water	index	1412
+variable	nl_water	index	96
+
+variable	n0_ox		index	1413
+variable	n1_ox		index	1612
+variable	nl_ox		index	200
+
+# Flags
+
+variable	flag_charged	index	1
+
+# Masses
+
+mass		 1   195.09000  # Pt
+mass		 2    12.01115  # c
+mass		 3    18.99840  # f
+mass		 4     1.00797  # ho
+mass		 5     1.00797  # hw
+mass		 6    15.99940  # o*
+mass		 7    15.99940  # o-
+mass		 8    15.99940  # o=
+mass		 9    15.99940  # oc
+mass		10    15.99940  # oh
+mass		11    32.06400  # s
+
+# Potentials
+
+pair_style hybrid	lj/cut/coul/long ${cutoff} ${charge_cutoff} morse/smooth/linear ${cutoff}  # 9.5
+bond_style	harmonic
+angle_style harmonic
+dihedral_style  charmm
+pair_modify	mix sixthpower shift yes
+special_bonds	lj/coul 0 0 1
+
+# Pair Coeffs
+
+pair_coeff	 1  1    lj/cut/coul/long      0.00000    2.90340  # Pt,Pt
+pair_coeff   1  2    morse/smooth/linear                 0.33800	   1.54033	4.47600
+pair_coeff   1  3    morse/smooth/linear                 0.20500     0.81586  3.67400
+pair_coeff   1  4    morse/smooth/linear                 0.23100     3.72902  1.60900
+pair_coeff   1  5    morse/smooth/linear                 1.36400     1.60936  3.0540
+pair_coeff   1  6    morse/smooth/linear                 6.43300     1.11517  3.47300
+pair_coeff   1  7    morse/smooth/linear                 2.50000     2.41059  2.41600
+pair_coeff   1  8    morse/smooth/linear                 0.42900    1.01210  3.47000
+pair_coeff   1  9    morse/smooth/linear                 2.35100    1.02429  2.51100
+pair_coeff   1  10   morse/smooth/linear                 0.40900    1.01210  3.47000
+pair_coeff   1  11   morse/smooth/linear                 3.04100    2.14942  3.41300   
+pair_coeff	 2  2   lj/cut/coul/long    0.09510    3.89830  # c,c
+pair_coeff	 3  3   lj/cut/coul/long    0.07250    3.47200  # f,f
+pair_coeff	 4  4   lj/cut/coul/long    0.02701    2.77400  # hn,hn
+pair_coeff	 5  5   lj/cut/coul/long    0.02701    2.77400  # hw,hw
+pair_coeff   6  6   lj/cut/coul/long    0.09570    3.40460  # na,na
+pair_coeff	 7  7   lj/cut/coul/long    0.09570    3.40460  # o*,o*
+pair_coeff	 8  8   lj/cut/coul/long    0.06000    3.59600  # o-,o-
+pair_coeff	 9  9   lj/cut/coul/long    0.09570    3.40460  # o=,o=
+pair_coeff	 10 10  lj/cut/coul/long    0.09570    3.40460  # oc,oc
+pair_coeff	11 11   lj/cut/coul/long    0.34400    4.03000  # s,s
+
+# Bond Coeffs
+
+bond_coeff	1    350.0  1.53000    # c,c
+bond_coeff	2    350.0  1.37100    # c,f
+bond_coeff	3    350.0  1.28800    # c,oc
+bond_coeff	4    350.0  1.80000    # c,s
+bond_coeff	5    563.2  0.97000    # hn,na
+bond_coeff	6    563.2  0.97000    # hw,o*
+bond_coeff	7    700.0  1.11000    # o-,o-
+bond_coeff	8    350.0  1.59000    # o=,s
+
+# Angle Coeffs
+
+angle_coeff	 1  50.00000  109.47100     # c,c,c
+angle_coeff	 2  50.00000  109.47100     # c,c,f
+angle_coeff	 3  50.00000  109.47100     # c,c,oc
+angle_coeff	 4  50.00000  109.47100     # c,c,s
+angle_coeff	 5  50.00000  104.51000     # c,oc,c
+angle_coeff	 6  50.00000  92.100000     # c,s,o=
+angle_coeff	 7  50.00000  109.47100     # f,c,f
+angle_coeff	 8  50.00000  109.47100     # f,c,oc
+angle_coeff  9  50.00000  109.47100     # f,c,s
+angle_coeff	10  49.84000  103.70000     # hn,na,hn
+angle_coeff	11  49.84000  103.70000     # hw,o*,hw
+angle_coeff	12  50.00000  92.100000     # o=,s,o=
+angle_coeff	13  50.00000  109.47100     # oc,c,oc
+
+# Dihedral Coeffs
+
+dihedral_coeff	 1    0.111100   3    0    0.0  # c,c,c,c
+dihedral_coeff	 2    0.111100   3    0    0.0  # c,c,c,f
+dihedral_coeff	 3    0.111100   3    0    0.0  # c,c,c,oc
+dihedral_coeff	 4    0.083300   6  180    0.0 # c,c,oc,c
+dihedral_coeff	 5    0.111100   3    0    0.0  # c,c,s,o=
+dihedral_coeff	 6    0.083300   6  180    0.0  # c,oc,c,f
+dihedral_coeff	 7    0.083300   6  180    0.0  # c,oc,c,oc
+dihedral_coeff	 8    0.111100   3    0    0.0  # f,c,c,f
+dihedral_coeff	 9    0.111100   3    0    0.0  # f,c,c,oc
+dihedral_coeff	10    0.111100   3    0    0.0  # f,c,c,s
+dihedral_coeff	11    0.111100   3    0    0.0  # f,c,s,o=
+dihedral_coeff	12    0.111100   3    0    0.0  # f,c,c,oc
+dihedral_coeff	13    0.111100   3    0    0.0  # oc,c,c,s
+
