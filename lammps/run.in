@@ -58,7 +58,7 @@ minimize       0.0 1.0e-8 10000 1000000
 
 
 timestep       ${timestep}
-write_data     after_min.data
+write_data     ${dir}/after_min.data
 
 # Integrate
 
@@ -73,7 +73,7 @@ fix 	       int notoxpt nve/limit 0.1
 run 	       ${annealtime}
 unfix          int
 unfix          temp
-write_data     after_anneal.data
+write_data     ${dir}/after_anneal.data
 
 label        simulate
 
@@ -82,6 +82,6 @@ fix 	       int notpt nve
 
 run 	       2000000
 
-write_data     ${name}_run.data
+write_data     ${dir}/${name}_run.data
 
 
