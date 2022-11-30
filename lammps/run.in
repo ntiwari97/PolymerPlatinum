@@ -76,8 +76,9 @@ unfix          temp
 write_data     after_anneal.data
 
 label        simulate
-fix 	       int notpt nve
 
+unfix        frox
+fix 	       int notpt nve
 
 run 	       2000000
 
