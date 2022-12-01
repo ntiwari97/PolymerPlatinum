@@ -10,7 +10,7 @@ variable  nrestart   index   0
 variable  restartminusone   equal   ${nrestart}-1
 
 if "${nrestart} != 0" then &
-"variable	data		index	${name}_12_${restartminusone}.rst" &
+"variable	data		index	${dir}/${name}_12_${restartminusone}.rst" &
 else &
 "variable	data		index	${dir}/${name}_edit.data" &
 
