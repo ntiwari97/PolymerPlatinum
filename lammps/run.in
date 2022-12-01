@@ -7,7 +7,7 @@ variable  annealtime index 2000000
 variable  name       index D2020_Pt
 variable  dtdump     index   5000
 variable  nrestart   index   0
-
+variable  restartminusone   equal   ${nrestart}-1
 
 if "${nrestart} != 0" then &
 "variable	data		index	${name}_12_${restartminusone}.rst" &
@@ -30,8 +30,8 @@ read_data      ${data}
 include        D2020_1.8_Pt_dreiding.params
 kspace_style   pppm 0.00001
 kspace_modify  slab 10.0 
-dump	         1 all yaml ${dtdump} ${dir}/${name}.yaml id type xu yu zu
-dump	         2 all custom ${dtdump} ${dir}/${name}.lammpstrj id type xu yu zu
+dump	         1 all yaml ${dtdump} ${dir}/${name}_${nrestart}.yaml id type xu yu zu
+dump	         2 all custom ${dtdump} ${dir}/${name}_${nrestart}.lammpstrj id type xu yu zu
 if "${nrestart} != 0" then "dump_modify 1 append yes"
 thermo_style   custom etotal ke pe ebond eangle edihed eimp evdwl ecoul elong temp press vol
 thermo_modify  line yaml
