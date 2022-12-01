@@ -26,7 +26,12 @@ special_bonds  lj 0.000000 0.000000 1.000000 coul 0.000000 0.000000 1.000000
 bond_style     class2
 angle_style    class2
 dihedral_style class2
-read_data      ${data}
+
+if "${nrestart} != 0" then &
+"read_restart ${data}" &
+else &
+"read_data ${data}" &
+
 include        D2020_1.8_Pt_dreiding.params
 kspace_style   pppm 0.00001
 kspace_modify  slab 10.0 
