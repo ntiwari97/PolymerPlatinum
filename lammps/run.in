@@ -49,12 +49,9 @@ neigh_modify   every 1 delay 0 check yes
 neigh_modify    one 10000
 group          pt    type 1
 group          ox    type 8
-group          notox type != 8
 group          notpt    type != 1
-group          notoxpt     intersect   notox notpt 
 
 fix            frpt    pt   setforce 0.0 0.0 0.0
-fix            frox    ox   setforce 0.0 0.0 0.0
 
 if "${nrestart} != 0" then "jump SELF simulate"
 
@@ -67,14 +64,14 @@ write_data     ${dir}/after_min.data
 
 # Integrate
 
-fix        	temp notoxpt langevin 1000.0 1000.0 100.0 723853
-fix 	       int notoxpt nve/limit 0.1 
+fix        	temp notpt langevin 1000.0 1000.0 100.0 723853
+fix 	       int notpt nve/limit 0.1 
 run 	       ${annealtime}
 unfix          int
 unfix          temp
 
-fix        	temp notoxpt langevin 1000.0 353.0 100.0 723853
-fix 	       int notoxpt nve/limit 0.1 
+fix        	temp notpt langevin 1000.0 353.0 100.0 723853
+fix 	       int notpt nve/limit 0.1 
 run 	       ${annealtime}
 unfix          int
 unfix          temp
@@ -82,7 +79,6 @@ write_data     ${dir}/after_anneal.data
 
 label        simulate
 
-unfix        frox
 fix 	       int notpt nve
 
 run 	       2000000
