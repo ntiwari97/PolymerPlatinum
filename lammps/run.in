@@ -8,6 +8,8 @@ variable  name       index D2020_Pt
 variable  dtdump     index   5000
 variable  nrestart   index   0
 variable  restartminusone   equal   ${nrestart}-1
+variable  temp  index  353
+variable  mu         index  -8.1
 
 if "${nrestart} != 0" then &
 "variable	data		index	${dir}/${name}_12_${restartminusone}.rst" &
@@ -32,44 +34,53 @@ if "${nrestart} != 0" then &
 else &
 "read_data ${data}" &
 
+# Include Parameter File
 include        D2020_1.8_Pt_dreiding.params
+
+# Kspace Commands
 kspace_style   pppm 0.00001
-kspace_modify  slab 10.0 
+kspace_modify  slab 10.0
+
+# Dump Commands
 dump	         1 all yaml ${dtdump} ${dir}/${name}_${nrestart}.yaml id type xu yu zu
 dump	         2 all custom ${dtdump} ${dir}/${name}_${nrestart}.lammpstrj id type xu yu zu
 if "${nrestart} != 0" then "dump_modify 1 append yes"
+
+# Modify Log/Thermo Output
 thermo_style   custom etotal ke pe ebond eangle edihed eimp evdwl ecoul elong temp press vol
-thermo_modify  line yaml
+thermo_modify  line yaml flush yes
 thermo         1000
-thermo_modify  flush yes
 log	           ${dir}/log.lammps
+
+# Write restart files
 restart        100 ${dir}/${name}_11_${nrestart}.rst ${dir}/${name}_12_${nrestart}.rst
+if "${nrestart} != 0" then "jump SELF simulate"
+
+# Set minimization specs
 min_style      cg
 neigh_modify   every 1 delay 0 check yes
-neigh_modify    one 10000
+neigh_modify   one 10000
+
+# Create Groups and Freeze Selected atoms
 group          pt    type 1
 group          ox    type 8
 group          notpt    type != 1
-
 fix            frpt    pt   setforce 0.0 0.0 0.0
-
-if "${nrestart} != 0" then "jump SELF simulate"
-
+	
 # Minimize
 minimize       0.0 1.0e-8 10000 1000000
 
 
 timestep       ${timestep}
-write_data     ${dir}/after_min.data
 
-# Integrate
-
+# Anneal at 1000K
 fix        	temp notpt langevin 1000.0 1000.0 100.0 723853
 fix 	       int notpt nve/limit 0.1 
 run 	       ${annealtime}
 unfix          int
 unfix          temp
 
+# Drop from 1000K to 353K
 fix        	temp notpt langevin 1000.0 353.0 100.0 723853
 fix 	       int notpt nve/limit 0.1 
 run 	       ${annealtime}
@@ -77,9 +88,19 @@ unfix          int
 unfix          temp
 write_data     ${dir}/after_anneal.data
 
-label        simulate
+label          simulate
 
-fix 	       int notpt nve
+# GCMC
+molecule       oxygen oxygen.mol   # Molecule File
+variable       maxpolymer    equal    bound(notpt, zmax) # Find z bound of polymer
+region         polyregion    block    EDGE  EDGE  EDGE  EDGE  EDGE &
+               ${maxpolymer} # Region for GCMC insertion
+fix            oxgcmc   notpt   gcmc   100  100  0  0  54341   ${temp}   ${mu}   0.5  mol  oxygen &
+               region  polyregion
+
+# Set Integrator and modify to allow for variable number of atoms
+fix 	         int notpt nvt  ${temp} ${temp} 100
+compute_modify  nvt_temp dynamic/dof yes
 
 run 	       2000000
 
