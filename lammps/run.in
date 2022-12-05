@@ -66,7 +66,11 @@ group          pt    type 1
 group          ox    type 8
 group          notpt    type != 1
 fix            frpt    pt   setforce 0.0 0.0 0.0
-	
+
+# Set Harmonic wall
+
+fix wallhi all wall/harmonic zhi EDGE 622.609 0.000 4.0000 units box
+
 # Minimize
 minimize       0.0 1.0e-8 10000 1000000
 
