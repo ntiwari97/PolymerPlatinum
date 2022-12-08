@@ -102,7 +102,6 @@ label          simulate
 fix 	       int notpt nve 
 run 	       ${annealtime}
 unfix          int
-unfix          temp
 write_data     after_nve.data
 write_restart  after_nve.rst
 label          simulate
