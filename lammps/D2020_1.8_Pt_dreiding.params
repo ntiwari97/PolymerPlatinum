@@ -14,8 +14,8 @@ variable	nrelax		index	100
 variable	weight_nonbond	index	0.0001
 variable	weight_bond	index	0.0001
 variable	weight_focus	index	1
-variable	cutoff		index 15.0
-variable	charge_cutoff	index 32.0
+variable	cutoff		index 12.0
+variable	charge_cutoff	index 12.0
 variable	kappa		index	4
 variable	import		index	/opt/emc/lib/pt111
 variable	nx		index	1
@@ -203,8 +203,8 @@ bond_coeff	3    350.0  1.28800    # c,oc
 bond_coeff	4    350.0  1.80000    # c,s
 bond_coeff	5    563.2  0.97000    # hn,na
 bond_coeff	6    563.2  0.97000    # hw,o*
-bond_coeff	7    700.0  1.11000    # o-,o-
-bond_coeff	8    350.0  1.59000    # o=,s
+bond_coeff	7    350.0  1.59000    # o=,s
+bond_coeff	8    700.0  1.11000    # o-,o-
 
 # Angle Coeffs
 
@@ -220,7 +220,6 @@ angle_coeff  9  50.00000  109.47100     # f,c,s
 angle_coeff	10  49.84000  103.70000     # hn,na,hn
 angle_coeff	11  49.84000  103.70000     # hw,o*,hw
 angle_coeff	12  50.00000  92.100000     # o=,s,o=
-angle_coeff	13  50.00000  109.47100     # oc,c,oc
 
 # Dihedral Coeffs
 
@@ -230,11 +229,9 @@ dihedral_coeff	 3    0.111100   3    0    0.0  # c,c,c,oc
 dihedral_coeff	 4    0.083300   6  180    0.0 # c,c,oc,c
 dihedral_coeff	 5    0.111100   3    0    0.0  # c,c,s,o=
 dihedral_coeff	 6    0.083300   6  180    0.0  # c,oc,c,f
-dihedral_coeff	 7    0.083300   6  180    0.0  # c,oc,c,oc
-dihedral_coeff	 8    0.111100   3    0    0.0  # f,c,c,f
-dihedral_coeff	 9    0.111100   3    0    0.0  # f,c,c,oc
-dihedral_coeff	10    0.111100   3    0    0.0  # f,c,c,s
-dihedral_coeff	11    0.111100   3    0    0.0  # f,c,s,o=
-dihedral_coeff	12    0.111100   3    0    0.0  # f,c,c,oc
-dihedral_coeff	13    0.111100   3    0    0.0  # oc,c,c,s
+dihedral_coeff	 7    0.111100   3    0    0.0  # f,c,c,f
+dihedral_coeff	 8    0.111100   3    0    0.0  # f,c,c,oc
+dihedral_coeff	 9    0.111100   3    0    0.0  # f,c,c,s
+dihedral_coeff	10   0.111100   3    0    0.0  # f,c,s,o=
+dihedral_coeff	11    0.111100   3    0    0.0  # oc,c,c,s
 

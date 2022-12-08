@@ -46,7 +46,7 @@ ITEM	END
 ITEM	CLUSTERS
 
 poly    block,    8
-water1	water	49
+water1	water	1
 surface		import		1	$root+"lib/pt111"	emc, ncells=1:6:6
 
 ITEM	END
