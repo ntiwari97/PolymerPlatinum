@@ -5,7 +5,7 @@
 variable	timestep	index	0.25		# integration time step
 variable  annealtime index 1000000
 variable  name       index D2020_Pt
-variable  dtdump     index   500
+variable  dtdump     index   1000
 variable  nrestart   index   0
 variable  restartminusone   equal   ${nrestart}-1
 variable  temp  index  353
@@ -59,9 +59,6 @@ log	           log.lammps
 neigh_modify   every 1 delay 0 check yes
 neigh_modify   one 10000
 
-# Write restart files
-if "${nrestart} != 0" then "jump SELF simulate"
-
 # Set minimization specs
 min_style      cg
 
@@ -74,6 +71,9 @@ fix            frpt    pt   setforce 0.0 0.0 0.0
 # Set Harmonic wall
 
 fix wallhi all wall/harmonic zlo EDGE 622.609 0.000 4.0000 units box
+
+# Write restart files
+if "${nrestart} != 0" then "jump SELF simulate"
 
 # Minimize
 minimize       0.0 1.0e-8 10000 1000000
@@ -107,16 +107,16 @@ write_restart  after_nve.rst
 label          simulate
 
 # GCMC
-dump           3 all xyz ${dtdump} ${name}_${nrestart}.xyz
+dump           3 all xyz 500 ${name}_${nrestart}.xyz
 molecule       oxygen oxygen.mol   # Molecule File
-region         polyregion    block    EDGE EDGE EDGE EDGE 2.0 26.0     # Region for GCMC insertion
+region         polyregion    block    EDGE EDGE EDGE EDGE 6.0 51.0     # Region for GCMC insertion
 fix            oxgcmc   ox   gcmc   100  100  0  0  54341   ${temp} ${mu}   0.5  mol  oxygen &
                region  polyregion charge 0.0
-restart        10 ${name}_11_${nrestart}.rst ${name}_12_${nrestart}.rst
+restart        100 ${name}_11_${nrestart}.rst ${name}_12_${nrestart}.rst
 delete_atoms overlap 1.5 ox all mol yes
 
 # Set Integrator and modify to allow for variable number of atoms
-fix 	         int notpt nvt temp  ${temp} ${temp} 100
+fix 	         int all nvt temp  ${temp} ${temp} 100
 compute_modify  int_temp     dynamic/dof yes
 compute_modify  thermo_temp  dynamic/dof yes
 thermo_style   custom etotal ke pe f_oxgcmc[*]
