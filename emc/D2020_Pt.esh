@@ -61,6 +61,6 @@ ITEM	END
 
 ITEM	VERBATIM	2	
 
-translate	= {delta -> {-0.5*geometry(xx)+4.0,0, 0}};
+translate	= {delta -> {0.5*geometry(xx)+5.5,0, 0}};
 
 ITEM	END

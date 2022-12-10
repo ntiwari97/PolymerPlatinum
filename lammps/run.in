@@ -5,11 +5,11 @@
 variable	timestep	index	0.25		# integration time step
 variable  annealtime index 1000000
 variable  name       index D2020_Pt
-variable  dtdump     index   1000
+variable  dtdump     index   2500
 variable  nrestart   index   0
 variable  restartminusone   equal   ${nrestart}-1
 variable  temp  index  353
-variable  mu         index  -10.1
+variable  mu         index  -7.1
 
 if "${nrestart} != 0" then &
 "variable	data		index	after_anneal.rst" &
@@ -51,7 +51,7 @@ if "${nrestart} != 0" then "dump_modify 1 append yes"
 
 # Modify Log/Thermo Output
 thermo_style   custom etotal ke pe ebond eangle edihed eimp evdwl ecoul elong temp press vol
-thermo_modify  line yaml flush yes
+thermo_modify  line multi flush yes
 thermo         1000
 log	           log.lammps
 
@@ -109,7 +109,7 @@ label          simulate
 # GCMC
 dump           3 all xyz 500 ${name}_${nrestart}.xyz
 molecule       oxygen oxygen.mol   # Molecule File
-region         polyregion    block    EDGE EDGE EDGE EDGE 6.0 51.0     # Region for GCMC insertion
+region         polyregion    block    EDGE EDGE EDGE EDGE 8.0 59.0     # Region for GCMC insertion
 fix            oxgcmc   ox   gcmc   100  100  0  0  54341   ${temp} ${mu}   0.5  mol  oxygen &
                region  polyregion charge 0.0
 restart        100 ${name}_11_${nrestart}.rst ${name}_12_${nrestart}.rst
@@ -119,7 +119,11 @@ delete_atoms overlap 1.5 ox all mol yes
 fix 	         int all nvt temp  ${temp} ${temp} 100
 compute_modify  int_temp     dynamic/dof yes
 compute_modify  thermo_temp  dynamic/dof yes
-thermo_style   custom etotal ke pe f_oxgcmc[*]
+variable	tacc equal f_oxgcmc[2]/(f_oxgcmc[1]+0.1)
+variable	iacc equal f_oxgcmc[4]/(f_oxgcmc[3]+0.1)
+variable	dacc equal f_oxgcmc[6]/(f_oxgcmc[5]+0.1)
+variable	racc equal f_oxgcmc[8]/(f_oxgcmc[7]+0.1)
+thermo_style   custom etotal ke pe press temp v_iacc v_dacc v_tacc v_racc
 thermo_modify  line multi
 run 	       2000000
 
