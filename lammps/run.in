@@ -70,7 +70,7 @@ fix            frpt    pt   setforce 0.0 0.0 0.0
 
 # Set Harmonic wall
 
-fix wallhi all wall/harmonic zlo EDGE 622.609 0.000 4.0000 units box
+fix wallhi all wall/harmonic zhi EDGE 622.609 0.000 4.0000 units box
 
 # Write restart files
 if "${nrestart} != 0" then "jump SELF simulate"
