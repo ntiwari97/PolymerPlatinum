@@ -3,7 +3,7 @@
 # Variables
 
 variable	timestep	index	0.25		# integration time step
-variable  annealtime index 1000000
+variable  annealtime index 3000000
 variable  name       index D2020_Pt
 variable  dtdump     index   2500
 variable  nrestart   index   0
