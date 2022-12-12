@@ -1,0 +1,17 @@
+LAMMPS molecule file. Oxygen(O_2)
+ 2 atoms
+ 1 bonds
+
+Coords
+
+1  0.000000  0.000000  0.000000
+2  0.000000  0.000000  1.110000
+
+Types
+
+1  8
+2  8
+
+Bonds
+
+1  8  1 2

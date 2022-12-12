@@ -6,7 +6,7 @@ replace		true
 number    true
 field_type	cff
 field_name	pcff
-field_location	.
+field_location	..
 field_debug     reduced
 temperature	1000
 pressure	1

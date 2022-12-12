@@ -1,0 +1,65 @@
+#!/usr/bin/env emc_setup.pl
+
+ITEM	OPTIONS
+
+replace		true
+number    true
+field_type	cff
+field_name	pcff
+field_location	..
+temperature	1000
+pressure	1
+phases    poly water1
+density   1.6
+project   HOPI_Pt
+emc_execute	true
+seed -1
+
+ITEM	VARIABLES
+
+# following variables redefine counterparts occuring in "lib/diamond_bonded"
+
+bcc_chemistry		"[Pt]"
+bcc_name		"platinum"
+bcc_atomistic		2
+
+lbond			3.912
+
+ITEM	END
+
+# Groups
+
+ITEM	GROUPS
+
+A   C1(C(F)(F)F)(C(F)(F)F)OC(F)(C(*)(O1)F)*,1,A:2
+B		*C(F)(OC(F)(F)C(F)(F)S(=O)(=O)=O)C(F)(F)*.N(H)(H)(H),1,A:2,2,A:1
+T		FC*(F)F,1,A:1,1,A:2,1,B:1,1,B:2
+
+water		O(H)(H)
+oxygen  O=O
+
+ITEM	END
+
+# Clusters
+
+ITEM	CLUSTERS
+
+poly    block,    8
+water1	water	1
+surface		import		1	$root+"lib/pt111"	emc, ncells=1:6:6
+
+ITEM	END
+
+ITEM	POLYMERS
+
+poly
+
+2		A,3,B,1,A,2,B,1,A,3,B,1,A,2,B,1,A,3,B,1,A,2,B,1,T,2
+
+ITEM	END
+
+ITEM	VERBATIM	2	
+
+translate	= {delta -> {0.5*geometry(xx)+5.5,0, 0}};
+
+ITEM	END

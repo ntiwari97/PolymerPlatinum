@@ -1,0 +1,338 @@
+(* EMC: Enhanced Monte Carlo simulations *)
+
+version 9.4.4, build Jul 27 2022 17:22:21, date Mon Dec 12 12:09:07 2022
+
+valid until Jul 27, 2023
+
+Info: script v1.0 started at Mon Dec 12 12:09:07 2022
+Info: variables = {seed -> -1, ntotal -> 10000, fshape -> 1, output ->
+        "HOPI_Pt", field -> "pcff", location1 -> "../", nav -> 0.6022141179, 
+        temperature -> 1000, radius -> 5, nrelax -> 100, weight_nonbond ->
+        0.0001, weight_bond -> 0.0001, weight_focus -> 1, cutoff -> 9.5, 
+        charge_cutoff -> 9.5, kappa -> 4, import -> "/opt/emc/lib/pt111", nx
+        -> 1, density1 -> 1.6, lprevious -> 0, lphase -> 0, f_poly -> 8, 
+        f_water1 -> 1, chem_A -> "C1(C(F)(F)F)(C(F)(F)F)OC(F)(C(*)(O1)F)*", 
+        chem_B -> "*C(F)(OC(F)(F)C(F)(F)S(=O)(=O)=O)C(F)(F)*.N(H)(H)(H)", 
+        chem_T -> "FC*(F)F", chem_water -> "O(H)(H)", chem_oxygen -> "O=O", 
+        bcc_chemistry -> "[Pt]", bcc_name -> "platinum", bcc_atomistic -> 2, 
+        lbond -> 3.912}
+Info: output = 
+      {detail -> 3, wide -> false, expand -> false, math -> true, reduced ->
+        false, info -> true, strict -> true, warning -> true, message -> true,
+        debug -> false, exit -> true, ignore -> false}
+Info: field = {id -> opls-ua, mode -> cff, style -> none, name ->
+        {"../pcff.frc", "../pcff_templates.dat"}, compress -> false, error ->
+        true, debug -> false, check -> {atomistic -> true, charge -> true}}
+Info: importing '../pcff.frc'
+Warning: duplicate field.bond entry 40 [28:28] omitted.
+Warning: duplicate field.bond entry 51 [28:77] omitted.
+Warning: duplicate field.bond entry 62 [28:157] omitted.
+Warning: duplicate field.bond entry 176 [44:45] omitted.
+Warning: duplicate field.bond entry 328 [53:156] omitted.
+Warning: duplicate field.bond entry 364 [65:65] omitted.
+Warning: duplicate field.bond entry 365 [65:65] omitted.
+Warning: duplicate field.bond entry 367 [65:77] omitted.
+Warning: duplicate field.bond entry 689 [143:171] omitted.
+Info: get = {name -> "/opt/emc/lib/pt111", compress -> false}
+Warning: duplicate field.bond entry 40 [28:28] omitted.
+Warning: duplicate field.bond entry 51 [28:77] omitted.
+Warning: duplicate field.bond entry 62 [28:157] omitted.
+Warning: duplicate field.bond entry 176 [44:45] omitted.
+Warning: duplicate field.bond entry 328 [53:156] omitted.
+Warning: duplicate field.bond entry 364 [65:65] omitted.
+Warning: duplicate field.bond entry 365 [65:65] omitted.
+Warning: duplicate field.bond entry 367 [65:77] omitted.
+Warning: duplicate field.bond entry 689 [143:171] omitted.
+Info: variables = {lxx -> 9.04, lyy -> 4.801, lzz -> 5.543717, lzy -> 0, lzx
+        -> 0, lyx -> 0, la -> 9.04, lb -> 4.801, lc -> 5.543717, lbox ->
+        6.21966599105}
+Info: groups = {ngroups -> 5, group -> {
+          {id -> A, chemistry -> "C1(C(F)(F)F)(C(F)(F)F)OC(F)(C(*)(O1)F)*", 
+            depth -> 8, charges -> forcefield, charge -> 0, terminator ->
+            false, nconnects -> 6, connects -> {
+              {source -> $end1, destination -> {index -> A, site -> $end2}}, 
+              {source -> $end1, destination -> {index -> B, site -> $end2}}, 
+              {source -> $end1, destination -> {index -> T, site -> $end1}}, 
+              {source -> $end2, destination -> {index -> A, site -> $end1}}, 
+              {source -> $end2, destination -> {index -> B, site -> $end1}}, 
+              {source -> $end2, destination -> {index -> T, site -> $end1}}}, 
+            bias -> none}, 
+          {id -> B, chemistry ->
+            "*C(F)(OC(F)(F)C(F)(F)S(=O)(=O)=O)C(F)(F)*.N(H)(H)(H)", depth ->
+            8, charges -> forcefield, charge -> 0, terminator -> false, 
+            nconnects -> 4, connects -> {
+              {source -> $end1, destination -> {index -> A, site -> $end2}}, 
+              {source -> $end1, destination -> {index -> T, site -> $end1}}, 
+              {source -> $end2, destination -> {index -> A, site -> $end1}}, 
+              {source -> $end2, destination -> {index -> T, site -> $end1}}}, 
+            bias -> none}, 
+          {id -> T, chemistry -> "FC*(F)F", depth -> 8, charges -> forcefield,
+            charge -> 0, terminator -> false, nconnects -> 4, connects -> {
+              {source -> $end1, destination -> {index -> A, site -> $end2}}, 
+              {source -> $end1, destination -> {index -> A, site -> $end1}}, 
+              {source -> $end1, destination -> {index -> B, site -> $end1}}, 
+              {source -> $end1, destination -> {index -> B, site -> $end2}}}, 
+            bias -> none}, 
+          {id -> water, chemistry -> "O(H)(H)", depth -> 8, charges ->
+            forcefield, charge -> 0, terminator -> false, bias -> none}, 
+          {id -> oxygen, chemistry -> "O=O", depth -> 8, charges ->
+            forcefield, charge -> 0, terminator -> false, bias -> none}}, 
+        ndeletes -> 0, npolymers -> 0}
+Info: field = {mode -> apply, style -> none, error -> true, debug -> false, 
+        check -> {atomistic -> true, charge -> true}}
+Info: applying '../pcff.frc'
+Info: variables = {lg_A -> 15, lg_B -> 20, lg_T -> 4, lg_water -> 3, lg_oxygen
+        -> 2, norm_poly -> 2, l_poly -> 353, l_water1 -> 3, norm_water1 -> 1, 
+        mg_A -> 244.04175, mg_B -> 294.12561, mg_T -> 69.00635, mg_water ->
+        18.01534, mg_oxygen -> 31.9988, m_poly -> 5563.39261, m_water1 ->
+        18.01534, n_poly -> 8, n_water1 -> 1, ntotal -> 0, mtotal -> 0}
+Info: variables = {nphase1 -> 2827, mphase1 -> 44525.15622, vphase1 ->
+        46209.8476445, ny -> 6, nz -> 6, lxtal -> 9.04, lphase -> 9.04, lbox
+        -> 30.9540606611, fshape -> 0.292045689868}
+Info: crystal = {n -> {x -> 1, y -> 6, z -> 6}, miller -> {x -> 1, y -> 0, z
+          -> 0}, plane -> a, periodic -> {x -> false, y -> true, z -> true}, 
+        translate -> {x -> 0, y -> 0, z -> 0}, unwrap -> false, complete ->
+        false, fit -> false}
+      n = {x -> 1, y -> 0, z -> 0}
+      r = {{x -> 1, y -> 0, z -> 0}, {x -> 0, y -> 1, z -> 0}, {x -> 0, y ->
+          0, z -> 1}}
+Warning: duplicate field.bond entry 40 [28:28] omitted.
+Warning: duplicate field.bond entry 51 [28:77] omitted.
+Warning: duplicate field.bond entry 62 [28:157] omitted.
+Warning: duplicate field.bond entry 176 [44:45] omitted.
+Warning: duplicate field.bond entry 328 [53:156] omitted.
+Warning: duplicate field.bond entry 364 [65:65] omitted.
+Warning: duplicate field.bond entry 365 [65:65] omitted.
+Warning: duplicate field.bond entry 367 [65:77] omitted.
+Warning: duplicate field.bond entry 689 [143:171] omitted.
+Info: flag = {system -> 0, oper -> set, flag -> {rigid, focus}, 
+        focus -> {mode -> com}, select -> all}
+      nflags = 576
+Info: simulation = {systems -> {properties -> {id -> 0, t -> temperature}}}
+Info: variables = {lxx -> 9.04, lyy -> 28.806, lzz -> 33.262302, lzy -> 0, lzx
+        -> 0, lyx -> 0, la -> 9.04, lb -> 28.806, lc -> 33.262302, charge ->
+        0, mtotal -> 112371.84, ntotal -> 576, vtotal -> 8661.71099756, 
+        nl_surface -> 576}
+Info: simulation = {units -> {permittivity -> 1, seed -> seed}, types -> {
+          coulomb -> {pair -> {active -> true, cutoff -> charge_cutoff}}}}
+Info: clusters = {progress -> none, nbodys -> 0, nclusters -> 1, 
+        cluster -> {id -> water1, system -> main, n -> 1, group -> water}, 
+        ngrafts -> 0, npolymers -> 1, 
+        polymer -> 
+        {id -> poly, system -> main, type -> block, niterations -> 1000, n ->
+          8, groups -> {A, B, A, B, A, B, A, B, A, B, A, B, T}, weights -> {1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, nrepeat -> {3, 1, 2, 1, 3, 1,
+            2, 1, 3, 1, 2, 1, 2}}}
+      delta = {systems -> 0, bodies -> 0, clusters -> 57, sites -> 2827}
+Info: field = {mode -> apply, style -> none, error -> true, debug -> false, 
+        check -> {atomistic -> true, charge -> true}}
+Info: applying '../pcff.frc'
+Info: variables = {nphase1 -> 2827, mphase1 -> 44525.15622, vphase1 ->
+        46209.8476445, lprevious -> 9.04, lphase1 -> 48.2280028534, lxx ->
+        57.2680028534, lphase -> 57.2680028534, ntotal -> 3403, mtotal ->
+        156896.99622, vtotal -> 54871.558642}
+Info: types = {cff -> {pair -> {active -> true, mode -> repulsive}}, region ->
+        {lj -> {active -> true, mode -> repulsive, data -> {{epsilon -> 0.1, 
+                sigma -> 1, region -> {shape -> cuboid, type -> absolute, h ->
+                  {lxtal, infinite, infinite}}}}}}}
+Info: build = {
+        system -> {id -> main, temperature -> 1000, density -> 4.74806220319, 
+          split -> false, flag -> {charge -> true, map -> true, pbc -> true, 
+            geometry -> true}, periodic -> {x -> true, y -> true, z -> true}, 
+          geometry -> {xx -> 57.2680028534, yy -> 28.806, zz -> 33.262302, zy
+            -> 0, zx -> 0, yx -> 0}, deform -> {xx -> 1, yy -> 1, zz -> 1, zy
+            -> 0, zx -> 0, yx -> 0}}, 
+        select -> {progress -> list, frequency -> 1, message -> nkt, center ->
+          false, origin -> {x -> 0, y -> 0, z -> 0}, order -> random, check ->
+          true, nclusters -> 2, cluster -> {poly, water1}, 
+          relax -> {ncycles -> 100, radius -> 5}, name -> "error", 
+          grow -> {check -> all, method -> energetic, cutoff -> 0, 
+            weight -> {nonbonded -> 0.0001, bonded -> 0.0001, focus -> 1}, 
+            theta -> 0, dphi -> 1, nbonded -> 20, ntrials -> 20, niterations
+            -> 1000}}}
+Info: building 2827 sites.
+Warning: not all sites of system 'main' are grown.
+
+   progress/%      E[0]/nkT
+---------------------------
+            0      9.528377
+            1      9.091106
+            2      8.703434
+            3      8.368392
+            4      8.056826
+            5      7.778266
+            6      7.534801
+            7      7.310757
+            8      7.116595
+            9      6.908685
+           10      6.746418
+           11      6.562594
+           12      6.421669
+           13      6.324794
+           14      6.181814
+           15      6.046616
+           16      5.956214
+           17      5.842651
+           18      5.759078
+           19      5.657929
+           20      5.561687
+           21      5.537186
+           22      5.385879
+           23      5.368167
+           24      5.290587
+           25      5.195429
+           26      5.183523
+           27      5.088086
+           28      5.025752
+           29      4.990255
+           30      4.969005
+           31      4.908771
+           32      4.901083
+           33      4.838983
+           34      4.830178
+           35      4.838963
+           36      4.852609
+           37      4.809086
+           38      4.773032
+           39      4.738012
+           40      4.700516
+           41      4.654257
+           42      4.594995
+           43      4.581384
+           44      4.558103
+           45      4.545799
+           46      4.529273
+           47      4.524581
+           48      4.493618
+           49      4.465711
+           50      4.488171
+           51       4.48986
+           52      4.497242
+           53      4.471178
+           54      4.493649
+           55      4.468165
+           56      4.466735
+           57      4.470132
+           58      4.474669
+           59      4.516749
+           60      4.519725
+           61        4.5322
+           62      4.554408
+           63       4.54549
+           64         4.576
+           65      4.589578
+           66       4.62822
+           67       4.66094
+           68      4.719756
+           69      4.681636
+           70      4.717079
+           71      4.741416
+           72      4.785138
+           73      4.892289
+           74      4.953523
+           75       5.01154
+           76      5.142075
+           77       5.19432
+           78       5.22191
+           79      5.278636
+           80       5.34797
+           81       5.33867
+           82      5.408118
+           83      5.448413
+           84       5.45343
+           85      5.405136
+           86      5.362483
+           87       5.36785
+           88      5.366073
+           89      5.366538
+           90      5.386835
+           91      5.392772
+           92      5.379533
+           93      5.371511
+           94      5.360038
+           95      5.404809
+           96      5.419277
+           97      5.472064
+           98      5.497346
+           99      5.563605
+          100      5.573487
+---------------------------
+      average      5.377227
+
+      niterations = 2827, <niterations> = 1
+Info: force = {style -> none, message -> nkt}
+
+(* Energy *)
+
+                         E[0]/nkT 
+---------------------------------
+cff.angle_angle       0.006167324 
+cff.angle_angle_tor    -0.1124351 
+cff.angle                1.705425 
+cff.angle_torsion    -0.005692111 
+cff.bond_angle         0.01356191 
+cff.bond_bond_13                0 
+cff.bond_bond          0.00165565 
+cff.bond                0.6639217 
+cff.end_bond_torsio -0.0005100691 
+cff.improper                    0 
+cff.middle_bond_tor   -0.04112161 
+cff.pair                 3.406574 
+cff.torsion           -0.06505418 
+region.lj            0.0009949313 
+---------------------------------
+total                    5.573487 
+
+Info: force = {style -> init, message -> nkt}
+
+(* Energy *)
+
+                         E[0]/nkT 
+---------------------------------
+cff.angle_angle       0.006167324 
+cff.angle_angle_tor    -0.1124351 
+cff.angle                1.705425 
+cff.angle_torsion    -0.005692111 
+cff.bond_angle         0.01356191 
+cff.bond_bond_13                0 
+cff.bond_bond          0.00165565 
+cff.bond                0.6639217 
+cff.end_bond_torsio -0.0005100691 
+cff.improper                    0 
+cff.middle_bond_tor   -0.04112161 
+cff.pair                 3.406574 
+cff.torsion           -0.06505418 
+region.lj            0.0009949313 
+---------------------------------
+total                    5.573487 
+
+Info: translate = {delta -> {x -> 34.1340014267, y -> 0, z -> 0}, system ->
+        main, periodic -> {x -> true, y -> true, z -> true}}
+Info: variables = {nl_poly -> 56}
+Info: put = {name -> "HOPI_Pt", compress -> true, detail -> 3}
+Info: pdb = {name -> "HOPI_Pt", compress -> true, extend -> false, mode ->
+        put, system -> main, length -> auto, forcefield -> cff, atomistic ->
+        full, depth -> auto, charges -> false, detect -> false, atom -> index,
+        residue -> index, segment -> index, rank -> false, hexadecimal ->
+        false, cut -> false, pbc -> true, map -> false, unwrap -> clusters, 
+        rigid -> true, fixed -> true, vdw -> false, connectivity -> false, 
+        crystal -> false, element -> auto, parameters -> false, flag -> {
+          charge -> true, map -> true, pbc -> true, geometry -> true}}
+Info: lammps = {name -> "HOPI_Pt", compress -> false, system -> main, mode ->
+        put, length -> auto, units -> none, forcefield -> cff, shake -> auto, 
+        atomistic -> none, detect -> true, cutoff -> false, charges -> true, 
+        ewald -> true, ellipsoid -> false, sphere -> false, bonds -> false, 
+        types -> false, data -> true, parameters -> true, cross -> false, 
+        variables -> true, coefficients -> true, comment -> true, map -> true,
+        unwrap -> true, flag -> {charge -> true, map -> true, pbc -> true, 
+          geometry -> true}}
+Info: tsc: bonded = {36.85, 13.95, 6.219, 15.03, 0.1386, 0.09125} s
+Info: tsc: simulation = 110.9 s, threads = 68.08 s
+Info: tsc: thread = 65.3 s
+Info: script v1.0 finished at Mon Dec 12 12:10:58 2022
+
+Info: Thank you for using EMC v9.4.4
+Info: In any publication of scientific results based in part or
+Info: completely on the use of EMC, please include this reference:
+Info: P.J. in 't Veld and G.C. Rutledge, Macromolecules 2003, 36, 7358
+
